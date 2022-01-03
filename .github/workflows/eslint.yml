@@ -11,4 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: 
+      - name: Install NVM
+        run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+      - name: Install Node.js
+        env:
+          NODE_VERSION: 16.6.2
+        run: nvm install $NODE_VERSION
+      - name: Install dependencies
+        run: npm install
+      - name: Litn source code with Eslint
+        run: npm run lint
